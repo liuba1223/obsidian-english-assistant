@@ -2396,8 +2396,7 @@ var DictionaryService = class {
     return this.cache.get(word.toLowerCase()) || null;
   }
   /**
-   * Load built-in ECDICT from plugin resources
-   * This provides a complete 770K+ word dictionary out of the box
+   * Load local ECDICT-compatible CSV from plugin resources
    */
   async loadBuiltInDictionary() {
     if (this.loadingPromise) {
@@ -2439,7 +2438,7 @@ var DictionaryService = class {
         this.isLoaded = false;
         return;
       }
-      console.log(`\u{1F4D6} Loading built-in ECDICT from: ${usedPath}`);
+      console.log(`\u{1F4D6} Loading local ECDICT dictionary from: ${usedPath}`);
       const startTime = performance.now();
       const lines = content.split("\n");
       if (lines.length === 0) {
@@ -2472,10 +2471,10 @@ var DictionaryService = class {
       }
       this.isLoaded = true;
       const loadTime = ((performance.now() - startTime) / 1e3).toFixed(2);
-      console.log(`\u2705 Built-in ECDICT loaded: ${loadedCount.toLocaleString()} words in ${loadTime}s`);
+      console.log(`\u2705 Local ECDICT dictionary loaded: ${loadedCount.toLocaleString()} words in ${loadTime}s`);
       new import_obsidian2.Notice(`Dictionary ready: ${loadedCount.toLocaleString()} words (${loadTime}s)`);
     } catch (error) {
-      console.error("\u26A0\uFE0F Failed to load built-in dictionary:", error);
+      console.error("\u26A0\uFE0F Failed to load local dictionary:", error);
       console.log("\u{1F4A1} Tip: You can replace resources/ecdict.csv with your own dictionary");
       this.loadingPromise = null;
       throw error;
@@ -3079,7 +3078,7 @@ var EnglishAssistantSettingTab = class extends import_obsidian6.PluginSettingTab
       });
       text.inputEl.rows = 8;
     });
-    this.addSectionHeader(containerEl, "\u{1F4D6} \u672C\u5730\u8BCD\u5178 (ECDICT)", "Built-in offline dictionary with 770K+ words");
+    this.addSectionHeader(containerEl, "\u{1F4D6} \u672C\u5730\u8BCD\u5178 (ECDICT)", "Optional offline dictionary using ECDICT-compatible CSV files");
     new import_obsidian6.Setting(containerEl).setName("\u8BCD\u5178\u52A0\u8F7D\u7B56\u7565").setDesc("\u9009\u62E9\u8BCD\u5178\u52A0\u8F7D\u65F6\u673A\u4EE5\u4F18\u5316\u6027\u80FD").addDropdown((dropdown) => dropdown.addOption("on-demand", "\u6309\u9700\u52A0\u8F7D (\u63A8\u8350) - \u9996\u6B21\u67E5\u8BCD\u65F6\u52A0\u8F7D").addOption("startup", "\u542F\u52A8\u65F6\u52A0\u8F7D - Obsidian \u542F\u52A8\u65F6\u7ACB\u5373\u52A0\u8F7D").addOption("disabled", "\u7981\u7528 - \u4E0D\u52A0\u8F7D\u672C\u5730\u8BCD\u5178").setValue(this.plugin.settings.dictionaryLoadStrategy || "on-demand").onChange(async (value) => {
       this.plugin.settings.dictionaryLoadStrategy = value;
       await this.plugin.saveSettings();
@@ -3091,26 +3090,26 @@ var EnglishAssistantSettingTab = class extends import_obsidian6.PluginSettingTab
     const dictInfo = containerEl.createDiv({ cls: "setting-item-description" });
     dictInfo.style.cssText = "background: var(--background-secondary); padding: 15px; border-radius: 8px; margin: 10px 0;";
     dictInfo.createEl("div", {
-      text: "\u{1F4DA} \u5185\u7F6E\u8BCD\u5178\u4FE1\u606F\uFF1A",
+      text: "\u{1F4DA} \u672C\u5730\u8BCD\u5178\u4FE1\u606F\uFF1A",
       attr: { style: "font-weight: bold; margin-bottom: 10px;" }
     });
     const infoList = dictInfo.createEl("ul", { attr: { style: "margin: 5px 0; padding-left: 20px;" } });
-    infoList.createEl("li", { text: "\u63D2\u4EF6\u5185\u7F6E\u4E86 77\u4E07+ \u8BCD\u6C47\u7684\u5B8C\u6574 ECDICT \u8BCD\u5178" });
-    infoList.createEl("li", { text: "\u8BCD\u5178\u6587\u4EF6\u4F4D\u7F6E\uFF1Aresources/ecdict.csv" });
-    infoList.createEl("li", { text: "\u5982\u9700\u66F4\u6362\u8BCD\u5178\uFF0C\u8BF7\u5C06\u65B0\u7684 CSV \u6587\u4EF6\u547D\u540D\u4E3A ecdict.csv \u5E76\u66FF\u6362 resources \u76EE\u5F55\u4E2D\u7684\u6587\u4EF6" });
+    infoList.createEl("li", { text: "\u63D2\u4EF6\u652F\u6301\u52A0\u8F7D ECDICT \u6216\u517C\u5BB9 CSV \u8BCD\u5178" });
+    infoList.createEl("li", { text: "\u63A8\u8350\u6587\u4EF6\u4F4D\u7F6E\uFF1Aresources/ecdict.csv" });
+    infoList.createEl("li", { text: "\u5982\u9700\u542F\u7528\u79BB\u7EBF\u67E5\u8BCD\uFF0C\u8BF7\u5148\u4E0B\u8F7D\u8BCD\u5178\uFF0C\u518D\u653E\u5165 resources \u76EE\u5F55" });
     dictInfo.createEl("div", {
-      text: "\u{1F4A1} \u63D0\u793A\uFF1A\u8BCD\u5178\u683C\u5F0F\u5FC5\u987B\u4E0E ECDICT \u683C\u5F0F\u517C\u5BB9\u3002\u4E0B\u8F7D\u5730\u5740\uFF1A",
+      text: "\u{1F4A1} \u63D0\u793A\uFF1A\u8BCD\u5178\u683C\u5F0F\u5FC5\u987B\u4E0E ECDICT \u683C\u5F0F\u517C\u5BB9\u3002\u5B98\u65B9\u4E0B\u8F7D\u5730\u5740\uFF1A",
       attr: { style: "margin-top: 10px; color: var(--text-muted);" }
     }).createEl("a", {
       text: "github.com/skywind3000/ECDICT",
       href: "https://github.com/skywind3000/ECDICT"
     });
-    new import_obsidian6.Setting(containerEl).setName("Enable Local Dictionary").setDesc("Use built-in ECDICT dictionary for instant word lookups (reduces API costs)").addToggle((toggle) => toggle.setValue(this.plugin.settings.enableLocalDictionary).onChange(async (value) => {
+    new import_obsidian6.Setting(containerEl).setName("Enable Local Dictionary").setDesc("Use an optional ECDICT-compatible local dictionary for instant word lookups").addToggle((toggle) => toggle.setValue(this.plugin.settings.enableLocalDictionary).onChange(async (value) => {
       this.plugin.settings.enableLocalDictionary = value;
       await this.plugin.saveSettings();
       if (value) {
         await this.plugin.dictService.loadBuiltInDictionary();
-        new import_obsidian6.Notice("\u6B63\u5728\u52A0\u8F7D\u5185\u7F6E\u8BCD\u5178...");
+        new import_obsidian6.Notice("\u6B63\u5728\u52A0\u8F7D\u672C\u5730\u8BCD\u5178...");
       } else {
         this.plugin.dictService.clear();
         new import_obsidian6.Notice("\u5DF2\u7981\u7528\u672C\u5730\u8BCD\u5178");
