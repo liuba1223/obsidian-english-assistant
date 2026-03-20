@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-english-assistant",
+  "name": "English Assistant",
+  "version": "2.2.0",
+  "minAppVersion": "0.15.0",
+  "description": "Analyzes English grammar and provides suggestions.",
+  "author": "LQ",
+  "authorUrl": "https://github.com/axtonliu/obsidian-english-assistant",
+  "isDesktopOnly": false
+}

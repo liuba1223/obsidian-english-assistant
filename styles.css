@@ -1,0 +1,1498 @@
+/* ============================================
+   English Assistant - Modern UI Design System
+   ============================================ */
+
+/* ========================================
+   1. Design Tokens (CSS Variables)
+   ======================================== */
+.english-assistant-modal {
+    /* Spacing Scale */
+    --ea-space-xs: 4px;
+    --ea-space-sm: 8px;
+    --ea-space-md: 12px;
+    --ea-space-lg: 16px;
+    --ea-space-xl: 24px;
+    --ea-space-2xl: 32px;
+    --ea-space-3xl: 48px;
+
+    /* Border Radius */
+    --ea-radius-sm: 4px;
+    --ea-radius-md: 8px;
+    --ea-radius-lg: 12px;
+    --ea-radius-xl: 16px;
+    --ea-radius-full: 9999px;
+
+    /* Shadows */
+    --ea-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --ea-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --ea-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --ea-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    /* Accent Colors */
+    --ea-accent: var(--interactive-accent);
+    --ea-accent-hover: var(--interactive-accent-hover);
+    --ea-success: #10b981;
+    --ea-warning: #f59e0b;
+    --ea-error: #ef4444;
+    --ea-info: #3b82f6;
+
+    /* Gradient */
+    --ea-gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --ea-gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --ea-gradient-warm: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    --ea-gradient-cool: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+
+    /* Transitions */
+    --ea-transition-fast: 0.15s ease;
+    --ea-transition-normal: 0.25s ease;
+    --ea-transition-slow: 0.35s ease;
+
+    /* Font Sizes */
+    --ea-text-xs: 0.75rem;
+    --ea-text-sm: 0.875rem;
+    --ea-text-base: 1rem;
+    --ea-text-lg: 1.125rem;
+    --ea-text-xl: 1.25rem;
+    --ea-text-2xl: 1.5rem;
+    --ea-text-3xl: 2rem;
+}
+
+/* ========================================
+   2. Base Modal Styles
+   ======================================== */
+.english-assistant-modal .modal-content {
+    padding: var(--ea-space-xl);
+    max-width: 850px;
+    border-radius: var(--ea-radius-lg);
+}
+
+/* Make Practice Modal resizable */
+.english-assistant-modal.practice-modal {
+    resize: both;
+    overflow: auto;
+    min-width: 600px;
+    min-height: 400px;
+    max-width: 95vw;
+    max-height: 95vh;
+    position: relative;
+}
+
+/* Add resize handle indicator */
+.english-assistant-modal.practice-modal::after {
+    content: '⋮⋮';
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    font-size: 12px;
+    color: var(--text-faint);
+    pointer-events: none;
+    transform: rotate(45deg);
+}
+
+.english-assistant-modal.practice-modal .modal-content {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.english-assistant-modal.practice-modal .ea-container {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Make Syntax Analysis Modal resizable */
+.english-assistant-modal.syntax-analysis-modal {
+    resize: both;
+    overflow: auto;
+    min-width: 600px;
+    min-height: 500px;
+    max-width: 95vw;
+    max-height: 95vh;
+    position: relative;
+}
+
+/* Add resize handle indicator */
+.english-assistant-modal.syntax-analysis-modal::after {
+    content: '⋮⋮';
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    font-size: 12px;
+    color: var(--text-faint);
+    pointer-events: none;
+    transform: rotate(45deg);
+}
+
+.english-assistant-modal.syntax-analysis-modal .modal-content {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Make Chat Modal resizable */
+.english-assistant-modal.chat-modal {
+    resize: both;
+    overflow: auto;
+    min-width: 500px;
+    min-height: 400px;
+    max-width: 95vw;
+    max-height: 90vh;
+}
+
+.english-assistant-modal.chat-modal .modal-content {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.english-assistant-modal.chat-modal .ea-container {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.english-assistant-modal.chat-modal .ea-chat-messages {
+    flex: 1;
+    min-height: 200px;
+}
+
+/* Dictation mode audio button highlight */
+.dictation-controls button:not(:disabled) {
+    animation: pulse 2s infinite;
+}
+
+.english-assistant-modal h2 {
+    font-size: var(--ea-text-2xl);
+    font-weight: 700;
+    margin: 0 0 var(--ea-space-lg) 0;
+    background: var(--ea-gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.english-assistant-modal h3 {
+    font-size: var(--ea-text-lg);
+    font-weight: 600;
+    margin: var(--ea-space-xl) 0 var(--ea-space-md) 0;
+    color: var(--text-normal);
+}
+
+/* ========================================
+   3. Button Styles
+   ======================================== */
+.ea-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--ea-space-sm);
+    padding: var(--ea-space-sm) var(--ea-space-lg);
+    font-size: var(--ea-text-sm);
+    font-weight: 600;
+    border-radius: var(--ea-radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all var(--ea-transition-fast);
+    text-decoration: none;
+}
+
+.ea-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--ea-shadow-md);
+}
+
+.ea-btn:active {
+    transform: translateY(0);
+}
+
+.ea-btn-primary {
+    background: var(--ea-gradient-primary);
+    color: white;
+}
+
+.ea-btn-secondary {
+    background: var(--background-secondary);
+    color: var(--text-normal);
+    border: 1px solid var(--background-modifier-border);
+}
+
+.ea-btn-secondary:hover {
+    background: var(--background-modifier-hover);
+}
+
+.ea-btn-success {
+    background: var(--ea-gradient-success);
+    color: white;
+}
+
+.ea-btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+}
+
+.ea-btn-ghost:hover {
+    background: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+.ea-btn-icon {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: var(--ea-radius-md);
+}
+
+.ea-btn-sm {
+    padding: var(--ea-space-xs) var(--ea-space-md);
+    font-size: var(--ea-text-xs);
+}
+
+.ea-btn-lg {
+    padding: var(--ea-space-md) var(--ea-space-xl);
+    font-size: var(--ea-text-base);
+}
+
+.ea-btn-block {
+    width: 100%;
+}
+
+/* ========================================
+   4. Card Styles
+   ======================================== */
+.ea-card {
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--ea-radius-lg);
+    padding: var(--ea-space-lg);
+    transition: all var(--ea-transition-normal);
+}
+
+.ea-card-hover:hover {
+    border-color: var(--ea-accent);
+    box-shadow: var(--ea-shadow-md);
+    transform: translateY(-2px);
+}
+
+.ea-card-gradient {
+    background: var(--ea-gradient-primary);
+    color: white;
+    border: none;
+}
+
+.ea-card-glass {
+    background: rgba(var(--background-secondary-rgb), 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   5. Input Styles
+   ======================================== */
+.ea-input {
+    width: 100%;
+    padding: var(--ea-space-md) var(--ea-space-lg);
+    font-size: var(--ea-text-base);
+    background: var(--background-primary);
+    border: 2px solid var(--background-modifier-border);
+    border-radius: var(--ea-radius-md);
+    color: var(--text-normal);
+    transition: all var(--ea-transition-fast);
+}
+
+.ea-input:focus {
+    outline: none;
+    border-color: var(--ea-accent);
+    box-shadow: 0 0 0 3px rgba(var(--interactive-accent-rgb), 0.15);
+}
+
+.ea-input::placeholder {
+    color: var(--text-faint);
+}
+
+.ea-textarea {
+    min-height: 80px;
+    resize: vertical;
+    font-family: inherit;
+    line-height: 1.6;
+}
+
+/* ========================================
+   6. Tag & Badge Styles
+   ======================================== */
+.ea-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--ea-space-xs) var(--ea-space-sm);
+    font-size: var(--ea-text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: var(--ea-radius-sm);
+    background: var(--background-modifier-border);
+    color: var(--text-muted);
+}
+
+.ea-tag-accent {
+    background: rgba(var(--interactive-accent-rgb), 0.15);
+    color: var(--ea-accent);
+}
+
+.ea-tag-success {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--ea-success);
+}
+
+.ea-tag-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--ea-warning);
+}
+
+.ea-tag-error {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--ea-error);
+}
+
+.ea-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 var(--ea-space-xs);
+    font-size: var(--ea-text-xs);
+    font-weight: 700;
+    border-radius: var(--ea-radius-full);
+    background: var(--ea-accent);
+    color: white;
+}
+
+/* ========================================
+   7. Grid System
+   ======================================== */
+.ea-grid {
+    display: grid;
+    gap: var(--ea-space-md);
+}
+
+.ea-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.ea-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.ea-grid-auto {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.ea-flex {
+    display: flex;
+}
+
+.ea-flex-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.ea-flex-between {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ea-gap-sm { gap: var(--ea-space-sm); }
+.ea-gap-md { gap: var(--ea-space-md); }
+.ea-gap-lg { gap: var(--ea-space-lg); }
+
+/* ========================================
+   8. Section Styles
+   ======================================== */
+.ea-section {
+    margin-bottom: var(--ea-space-xl);
+    padding-bottom: var(--ea-space-xl);
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.ea-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.ea-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--ea-space-lg);
+}
+
+.ea-section h4 {
+    margin: 0;
+    font-size: var(--ea-text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+/* ========================================
+   9. Stats Cards (Check-in)
+   ======================================== */
+.ea-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--ea-space-md);
+}
+
+.ea-stat-card {
+    background: var(--background-secondary);
+    border-radius: var(--ea-radius-lg);
+    padding: var(--ea-space-lg);
+    text-align: center;
+    transition: all var(--ea-transition-normal);
+}
+
+.ea-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--ea-shadow-md);
+}
+
+.ea-stat-icon {
+    font-size: var(--ea-text-2xl);
+    margin-bottom: var(--ea-space-sm);
+}
+
+.ea-stat-value {
+    font-size: var(--ea-text-xl);
+    font-weight: 700;
+    color: var(--text-normal);
+    margin-bottom: var(--ea-space-xs);
+}
+
+.ea-stat-label {
+    font-size: var(--ea-text-xs);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Streak Card - Special */
+.ea-streak-card {
+    background: var(--ea-gradient-primary);
+    color: white;
+    border-radius: var(--ea-radius-xl);
+    padding: var(--ea-space-xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ea-streak-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
+    50% { transform: translateX(-50%) translateY(-50%) rotate(180deg); }
+}
+
+.ea-streak-number {
+    font-size: var(--ea-text-3xl);
+    font-weight: 800;
+    position: relative;
+}
+
+.ea-streak-label {
+    font-size: var(--ea-text-sm);
+    opacity: 0.9;
+    position: relative;
+}
+
+/* Progress Card */
+.ea-progress-card {
+    background: var(--background-secondary);
+    border-radius: var(--ea-radius-xl);
+    padding: var(--ea-space-xl);
+    text-align: center;
+}
+
+.ea-progress-ring {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--ea-space-md);
+}
+
+.ea-progress-value {
+    font-size: var(--ea-text-xl);
+    font-weight: 700;
+}
+
+.ea-progress-bar {
+    height: 8px;
+    background: var(--background-modifier-border);
+    border-radius: var(--ea-radius-full);
+    overflow: hidden;
+    margin-top: var(--ea-space-md);
+}
+
+.ea-progress-fill {
+    height: 100%;
+    background: var(--ea-gradient-success);
+    border-radius: var(--ea-radius-full);
+    transition: width var(--ea-transition-slow);
+}
+
+/* ========================================
+   10. Calendar Heat Map
+   ======================================== */
+.ea-calendar-container {
+    background: var(--background-secondary);
+    border-radius: var(--ea-radius-lg);
+    padding: var(--ea-space-lg);
+    overflow-x: auto;
+}
+
+.ea-calendar-grid {
+    display: flex;
+    gap: 3px;
+}
+
+.ea-calendar-week {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.ea-calendar-day {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    transition: all var(--ea-transition-fast);
+    cursor: pointer;
+}
+
+.ea-calendar-day:hover {
+    transform: scale(1.3);
+    box-shadow: var(--ea-shadow-md);
+}
+
+.ea-calendar-day.level-0 { background: var(--background-modifier-border); }
+.ea-calendar-day.level-1 { background: rgba(16, 185, 129, 0.25); }
+.ea-calendar-day.level-2 { background: rgba(16, 185, 129, 0.5); }
+.ea-calendar-day.level-3 { background: rgba(16, 185, 129, 0.75); }
+.ea-calendar-day.level-4 { background: rgb(16, 185, 129); }
+
+.ea-calendar-legend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--ea-space-xs);
+    margin-top: var(--ea-space-md);
+    font-size: var(--ea-text-xs);
+    color: var(--text-muted);
+}
+
+.ea-calendar-legend-item {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+}
+
+/* ========================================
+   11. Chat Mode Styles
+   ======================================== */
+.ea-chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 65vh;
+    max-height: 550px;
+}
+
+.ea-chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: var(--ea-space-lg);
+    border-bottom: 1px solid var(--background-modifier-border);
+    margin-bottom: var(--ea-space-lg);
+}
+
+.ea-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--ea-space-lg);
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--ea-radius-lg);
+    margin-bottom: var(--ea-space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--ea-space-md);
+}
+
+.ea-chat-msg {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    animation: slideIn var(--ea-transition-normal);
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.ea-chat-msg.user {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.ea-chat-msg.assistant {
+    align-self: flex-start;
+    align-items: flex-start;
+}
+
+.ea-chat-bubble {
+    padding: var(--ea-space-md) var(--ea-space-lg);
+    border-radius: var(--ea-radius-xl);
+    font-size: var(--ea-text-sm);
+    line-height: 1.6;
+    position: relative;
+}
+
+.ea-chat-msg.user .ea-chat-bubble {
+    background: var(--ea-gradient-primary);
+    color: white;
+    border-bottom-right-radius: var(--ea-radius-sm);
+}
+
+.ea-chat-msg.assistant .ea-chat-bubble {
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-bottom-left-radius: var(--ea-radius-sm);
+    color: var(--text-normal);
+}
+
+.ea-chat-input-area {
+    display: flex;
+    gap: var(--ea-space-md);
+    align-items: flex-end;
+}
+
+.ea-chat-input {
+    flex: 1;
+    min-height: 44px;
+    max-height: 120px;
+    padding: var(--ea-space-md) var(--ea-space-lg);
+    border: 2px solid var(--background-modifier-border);
+    border-radius: var(--ea-radius-lg);
+    resize: none;
+    font-size: var(--ea-text-sm);
+    transition: all var(--ea-transition-fast);
+}
+
+.ea-chat-input:focus {
+    border-color: var(--ea-accent);
+    box-shadow: 0 0 0 3px rgba(var(--interactive-accent-rgb), 0.1);
+}
+
+/* Chat Suggestions */
+.ea-chat-suggestions {
+    background: var(--background-secondary);
+    border-radius: var(--ea-radius-lg);
+    padding: var(--ea-space-lg);
+    margin-bottom: var(--ea-space-lg);
+    border: 1px dashed var(--background-modifier-border);
+    animation: fadeIn var(--ea-transition-normal);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.ea-suggestion-card {
+    background: var(--background-primary);
+    border-left: 3px solid var(--ea-accent);
+    border-radius: var(--ea-radius-md);
+    padding: var(--ea-space-md);
+    margin-bottom: var(--ea-space-sm);
+}
+
+.ea-suggestion-card:last-child {
+    margin-bottom: 0;
+}
+
+/* Task Selection Cards */
+.ea-task-card {
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--ea-radius-lg);
+    padding: var(--ea-space-lg);
+    cursor: pointer;
+    transition: all var(--ea-transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.ea-task-card:hover {
+    border-color: var(--ea-accent);
+    transform: translateY(-3px);
+    box-shadow: var(--ea-shadow-lg);
+}
+
+.ea-task-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--ea-gradient-primary);
+    opacity: 0;
+    transition: opacity var(--ea-transition-fast);
+}
+
+.ea-task-card:hover::after {
+    opacity: 1;
+}
+
+.ea-task-emoji {
+    font-size: var(--ea-text-2xl);
+    margin-bottom: var(--ea-space-sm);
+}
+
+.ea-task-title {
+    font-size: var(--ea-text-base);
+    font-weight: 600;
+    margin-bottom: var(--ea-space-xs);
+}
+
+.ea-task-desc {
+    font-size: var(--ea-text-sm);
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ========================================
+   12. Practice Mode Styles
+   ======================================== */
+.ea-practice-container {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    max-height: 600px;
+}
+
+/* Grammar Panel */
+.ea-grammar-panel {
+    background: var(--background-secondary);
+    border-radius: var(--ea-radius-lg);
+    padding: var(--ea-space-lg);
+    margin-bottom: var(--ea-space-lg);
+    border: 1px solid var(--background-modifier-border);
+    box-shadow: var(--ea-shadow-sm);
+}
+
+.ea-word-header {
+    display: flex;
+    align-items: center;
+    gap: var(--ea-space-md);
+    flex-wrap: wrap;
+    margin-bottom: var(--ea-space-md);
+}
+
+.ea-word-title {
+    font-size: var(--ea-text-2xl);
+    font-weight: 700;
+    color: var(--ea-info);
+}
+
+.ea-word-phonetic {
+    font-size: var(--ea-text-base);
+    color: var(--text-muted);
+    font-family: var(--font-monospace);
+}
+
+.ea-word-meaning {
+    background: var(--background-primary);
+    border-radius: var(--ea-radius-md);
+    padding: var(--ea-space-md);
+    line-height: 1.6;
+}
+
+/* Display Area */
+.ea-display-container {
+    flex: 1;
+    font-family: var(--font-monospace);
+    font-size: 1.3em;
+    line-height: 2;
+    padding: var(--ea-space-xl);
+    background: var(--background-primary);
+    border: 2px solid var(--background-modifier-border);
+    border-radius: var(--ea-radius-lg) var(--ea-radius-lg) 0 0;
+    border-bottom: none;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+/* Character Highlighting */
+.ea-char {
+    color: var(--text-faint);
+    transition: all 0.05s ease;
+    border-radius: 2px;
+}
+
+.ea-char.correct {
+    color: var(--text-normal);
+    font-weight: 500;
+}
+
+/* Part-of-speech color highlighting with enhanced visibility */
+.ea-practice-content .ea-char.correct.noun,
+.ea-display-container .ea-char.correct.noun { 
+    color: #2563eb !important; /* Bright blue */
+    font-weight: 700 !important; 
+    text-shadow: 0 0 1px rgba(37, 99, 235, 0.3);
+}
+
+.ea-practice-content .ea-char.correct.verb,
+.ea-display-container .ea-char.correct.verb { 
+    color: #dc2626 !important; /* Bright red */
+    font-weight: 700 !important; 
+    text-shadow: 0 0 1px rgba(220, 38, 38, 0.3);
+}
+
+.ea-practice-content .ea-char.correct.adj,
+.ea-display-container .ea-char.correct.adj { 
+    color: #ea580c !important; /* Bright orange */
+    font-weight: 700 !important; 
+    text-shadow: 0 0 1px rgba(234, 88, 12, 0.3);
+}
+
+.ea-practice-content .ea-char.correct.adv,
+.ea-display-container .ea-char.correct.adv { 
+    color: #7c3aed !important; /* Bright purple */
+    font-weight: 700 !important; 
+    text-shadow: 0 0 1px rgba(124, 58, 237, 0.3);
+}
+
+/* Add hover effect to highlight word boundaries */
+.ea-practice-content .ea-char.correct:hover {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
+}
+
+/* Animation for POS color transition when typing */
+@keyframes colorPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.ea-practice-content .ea-char.correct.noun,
+.ea-practice-content .ea-char.correct.verb,
+.ea-practice-content .ea-char.correct.adj,
+.ea-practice-content .ea-char.correct.adv {
+    animation: colorPop 0.3s ease-out;
+}
+
+/* Enhanced color indicators in the reference text */
+.ea-display-container .ea-char[data-pos="noun"] {
+    border-bottom: 2px solid rgba(37, 99, 235, 0.2);
+}
+
+.ea-display-container .ea-char[data-pos="verb"] {
+    border-bottom: 2px solid rgba(220, 38, 38, 0.2);
+}
+
+.ea-display-container .ea-char[data-pos="adj"] {
+    border-bottom: 2px solid rgba(234, 88, 12, 0.2);
+}
+
+.ea-display-container .ea-char[data-pos="adv"] {
+    border-bottom: 2px solid rgba(124, 58, 237, 0.2);
+}
+
+.ea-char.current {
+    background: var(--ea-accent);
+    color: white;
+    padding: 0 2px;
+    animation: pulse 1.2s infinite;
+}
+
+.ea-char.error {
+    color: var(--ea-error);
+    background: rgba(239, 68, 68, 0.15);
+    animation: shake 0.3s;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+
+/* Dictation mode styles */
+.ea-char.hidden {
+    color: transparent;
+    background: var(--background-modifier-hover);
+    border-radius: 2px;
+    user-select: none;
+}
+
+.ea-char.blurred {
+    color: transparent;
+    text-shadow: 0 0 8px var(--text-muted);
+    user-select: none;
+}
+
+.ea-char.revealed {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Dictation mode toggle */
+.dictation-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background: var(--background-secondary);
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.dictation-toggle {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+/* Mermaid diagram optimization */
+.ea-mermaid-container {
+    min-height: 200px;
+    position: relative;
+}
+
+.ea-mermaid-container .mermaid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ea-mermaid-container svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.ea-mermaid-wrapper {
+    position: relative;
+    transition: max-height 0.3s ease;
+}
+
+/* Input Area */
+.ea-input-container {
+    padding: var(--ea-space-lg);
+    background: var(--background-secondary);
+    border: 2px solid var(--background-modifier-border);
+    border-radius: 0 0 var(--ea-radius-lg) var(--ea-radius-lg);
+    border-top: none;
+}
+
+.ea-input-label {
+    font-size: var(--ea-text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: var(--ea-space-sm);
+}
+
+.ea-input-area {
+    width: 100%;
+    min-height: 60px;
+    padding: var(--ea-space-md);
+    font-family: var(--font-monospace);
+    font-size: 1.1em;
+    line-height: 1.6;
+    background: var(--background-primary);
+    border: 2px solid var(--ea-accent);
+    border-radius: var(--ea-radius-md);
+    resize: none;
+    transition: all var(--ea-transition-fast);
+}
+
+.ea-input-area:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--interactive-accent-rgb), 0.15);
+}
+
+/* Practice Word Hover */
+.ea-practice-word {
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 0 2px;
+    transition: all var(--ea-transition-fast);
+}
+
+.ea-practice-word:hover {
+    background: var(--background-modifier-hover);
+}
+
+/* ========================================
+   13. Word Definition Modal
+   ======================================== */
+.word-definition-header {
+    background: var(--ea-gradient-primary);
+    padding: var(--ea-space-xl);
+    border-radius: var(--ea-radius-lg) var(--ea-radius-lg) 0 0;
+    color: white;
+}
+
+.word-title {
+    font-size: var(--ea-text-2xl);
+    font-weight: 700;
+    margin: 0 0 var(--ea-space-md) 0;
+}
+
+.meta-row {
+    display: flex;
+    align-items: center;
+    gap: var(--ea-space-md);
+    flex-wrap: wrap;
+}
+
+.phonetic {
+    font-family: var(--font-monospace);
+    font-size: var(--ea-text-base);
+    background: var(--background-modifier-hover);
+    color: var(--text-normal);
+    padding: var(--ea-space-xs) var(--ea-space-sm);
+    border-radius: var(--ea-radius-sm);
+    border: 1px solid var(--background-modifier-border);
+}
+
+.pos-tag {
+    background: rgba(255, 255, 255, 0.2);
+    padding: var(--ea-space-xs) var(--ea-space-sm);
+    border-radius: var(--ea-radius-sm);
+    font-size: var(--ea-text-sm);
+    font-weight: 600;
+}
+
+.definition-section,
+.example-section {
+    padding: var(--ea-space-xl);
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.definition-section h3,
+.example-section h3 {
+    font-size: var(--ea-text-xs);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin: 0 0 var(--ea-space-md) 0;
+}
+
+.definition-text {
+    font-size: var(--ea-text-base);
+    line-height: 1.7;
+}
+
+.example-text {
+    font-style: italic;
+    color: var(--text-muted);
+    padding-left: var(--ea-space-md);
+    border-left: 3px solid var(--ea-accent);
+}
+
+.word-definition-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--ea-space-md);
+    padding: var(--ea-space-lg) var(--ea-space-xl);
+    background: var(--background-secondary);
+    border-radius: 0 0 var(--ea-radius-lg) var(--ea-radius-lg);
+}
+
+/* ========================================
+   14. Grammar Practice
+   ======================================== */
+.ea-option-btn {
+    width: 100%;
+    text-align: left;
+    padding: var(--ea-space-md) var(--ea-space-lg);
+    margin-bottom: var(--ea-space-sm);
+    background: var(--background-secondary);
+    border: 2px solid var(--background-modifier-border);
+    border-radius: var(--ea-radius-md);
+    cursor: pointer;
+    transition: all var(--ea-transition-fast);
+    font-size: var(--ea-text-sm);
+}
+
+.ea-option-btn:hover {
+    border-color: var(--ea-accent);
+    background: var(--background-modifier-hover);
+}
+
+.ea-option-btn.correct {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: var(--ea-success);
+    color: var(--ea-success);
+}
+
+.ea-option-btn.wrong {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: var(--ea-error);
+    color: var(--ea-error);
+}
+
+/* ========================================
+   15. Statistics & Reports
+   ======================================== */
+.ea-stat-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--ea-space-md);
+}
+
+.ea-stat-label {
+    width: 140px;
+    font-weight: 600;
+    color: var(--text-normal);
+    flex-shrink: 0;
+    font-size: var(--ea-text-sm);
+}
+
+.ea-stat-bar-container {
+    flex: 1;
+    height: 28px;
+    background: var(--background-secondary);
+    border-radius: var(--ea-radius-md);
+    overflow: hidden;
+}
+
+.ea-stat-bar {
+    height: 100%;
+    background: var(--ea-gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: var(--ea-space-md);
+    font-size: var(--ea-text-xs);
+    font-weight: 600;
+    color: white;
+    min-width: 30px;
+    transition: width var(--ea-transition-slow);
+}
+
+/* ========================================
+   16. Vocabulary Cards
+   ======================================== */
+.ea-vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--ea-space-md);
+}
+
+.ea-vocab-card {
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--ea-radius-lg);
+    padding: var(--ea-space-lg);
+    transition: all var(--ea-transition-normal);
+}
+
+.ea-vocab-card:hover {
+    border-color: var(--ea-accent);
+    box-shadow: var(--ea-shadow-md);
+}
+
+.ea-vocab-card strong {
+    font-size: var(--ea-text-lg);
+    color: var(--ea-accent);
+    display: block;
+    margin-bottom: var(--ea-space-sm);
+}
+
+/* ========================================
+   17. Error Display
+   ======================================== */
+.ea-error-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ea-error-list li {
+    padding: var(--ea-space-md);
+    margin-bottom: var(--ea-space-sm);
+    background: rgba(239, 68, 68, 0.05);
+    border-left: 3px solid var(--ea-error);
+    border-radius: 0 var(--ea-radius-md) var(--ea-radius-md) 0;
+}
+
+.ea-error-source {
+    font-weight: 600;
+    color: var(--ea-error);
+    text-decoration: line-through;
+}
+
+.ea-correction {
+    font-weight: 600;
+    color: var(--ea-success);
+}
+
+.ea-explanation {
+    display: block;
+    margin-top: var(--ea-space-xs);
+    font-size: var(--ea-text-sm);
+    color: var(--text-muted);
+}
+
+/* ========================================
+   18. Modal Footer
+   ======================================== */
+.ea-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--ea-space-md);
+    margin-top: var(--ea-space-xl);
+    padding-top: var(--ea-space-lg);
+    border-top: 1px solid var(--background-modifier-border);
+}
+
+/* ========================================
+   19. Loading & Empty States
+   ======================================== */
+.ea-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--ea-space-3xl);
+    color: var(--text-muted);
+}
+
+.ea-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--background-modifier-border);
+    border-top-color: var(--ea-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: var(--ea-space-md);
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.ea-empty {
+    text-align: center;
+    padding: var(--ea-space-3xl);
+    color: var(--text-muted);
+}
+
+.ea-empty-icon {
+    font-size: var(--ea-text-3xl);
+    margin-bottom: var(--ea-space-md);
+    opacity: 0.5;
+}
+
+/* ========================================
+   20. Toast / Notice Enhancements
+   ======================================== */
+.ea-toast {
+    position: fixed;
+    bottom: var(--ea-space-xl);
+    right: var(--ea-space-xl);
+    background: var(--background-primary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--ea-radius-lg);
+    padding: var(--ea-space-md) var(--ea-space-lg);
+    box-shadow: var(--ea-shadow-xl);
+    animation: slideUp var(--ea-transition-normal);
+    z-index: 1000;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   21. Mobile Responsive
+   ======================================== */
+@media (max-width: 600px) {
+    .english-assistant-modal .modal-content {
+        padding: var(--ea-space-lg);
+    }
+
+    .ea-grid-2,
+    .ea-grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .ea-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ea-chat-msg {
+        max-width: 90%;
+    }
+
+    .ea-word-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .word-definition-header {
+        padding: var(--ea-space-lg);
+    }
+
+    .word-title {
+        font-size: var(--ea-text-xl);
+    }
+}
+
+/* ========================================
+   22. Dark Mode Adjustments
+   ======================================== */
+.theme-dark .ea-card-glass {
+    background: rgba(30, 30, 30, 0.8);
+}
+
+.theme-dark .ea-calendar-day.level-1 { background: rgba(16, 185, 129, 0.2); }
+.theme-dark .ea-calendar-day.level-2 { background: rgba(16, 185, 129, 0.4); }
+.theme-dark .ea-calendar-day.level-3 { background: rgba(16, 185, 129, 0.6); }
+.theme-dark .ea-calendar-day.level-4 { background: rgb(16, 185, 129); }
+
+/* ========================================
+   23. Accessibility
+   ======================================== */
+.ea-btn:focus-visible,
+.ea-input:focus-visible,
+.ea-card:focus-visible {
+    outline: 2px solid var(--ea-accent);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========================================
+   24. Scrollbar Styling
+   ======================================== */
+.english-assistant-modal ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.english-assistant-modal ::-webkit-scrollbar-track {
+    background: var(--background-secondary);
+    border-radius: var(--ea-radius-full);
+}
+
+.english-assistant-modal ::-webkit-scrollbar-thumb {
+    background: var(--background-modifier-border);
+    border-radius: var(--ea-radius-full);
+}
+
+.english-assistant-modal ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* ========================================
+   25. Legacy Compatibility
+   ======================================== */
+.ea-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.ea-alt-card {
+    background: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    border-radius: var(--ea-radius-lg);
+    padding: var(--ea-space-lg);
+    cursor: pointer;
+    transition: all var(--ea-transition-normal);
+}
+
+.ea-alt-card:hover {
+    border-color: var(--ea-accent);
+    transform: translateY(-2px);
+    box-shadow: var(--ea-shadow-md);
+}
+
+.ea-text-block {
+    padding: var(--ea-space-md);
+    background: var(--background-secondary);
+    border-radius: var(--ea-radius-md);
+    font-family: var(--font-monospace);
+    white-space: pre-wrap;
+}
+
+.ea-success {
+    color: var(--ea-success);
+    font-weight: 600;
+}
+
+.ea-form .setting-item {
+    border-bottom: none;
+    padding: var(--ea-space-sm) 0;
+}
