@@ -668,7 +668,7 @@ export class EnglishAssistantSettingTab extends PluginSettingTab {
         // ====================
         // 📖 Local Dictionary
         // ====================
-        this.addSectionHeader(containerEl, '📖 本地词典 (ECDICT)', 'Built-in offline dictionary with 770K+ words');
+        this.addSectionHeader(containerEl, '📖 本地词典 (ECDICT)', 'Optional offline dictionary using ECDICT-compatible CSV files');
         
         // Dictionary Load Strategy Setting
         new Setting(containerEl)
@@ -694,17 +694,17 @@ export class EnglishAssistantSettingTab extends PluginSettingTab {
         dictInfo.style.cssText = 'background: var(--background-secondary); padding: 15px; border-radius: 8px; margin: 10px 0;';
         
         dictInfo.createEl('div', {
-            text: '📚 内置词典信息：',
+            text: '📚 本地词典信息：',
             attr: { style: 'font-weight: bold; margin-bottom: 10px;' }
         });
         
         const infoList = dictInfo.createEl('ul', { attr: { style: 'margin: 5px 0; padding-left: 20px;' } });
-        infoList.createEl('li', { text: '插件内置了 77万+ 词汇的完整 ECDICT 词典' });
-        infoList.createEl('li', { text: '词典文件位置：resources/ecdict.csv' });
-        infoList.createEl('li', { text: '如需更换词典，请将新的 CSV 文件命名为 ecdict.csv 并替换 resources 目录中的文件' });
+        infoList.createEl('li', { text: '插件支持加载 ECDICT 或兼容 CSV 词典' });
+        infoList.createEl('li', { text: '推荐文件位置：resources/ecdict.csv' });
+        infoList.createEl('li', { text: '如需启用离线查词，请先下载词典，再放入 resources 目录' });
         
         dictInfo.createEl('div', {
-            text: '💡 提示：词典格式必须与 ECDICT 格式兼容。下载地址：',
+            text: '💡 提示：词典格式必须与 ECDICT 格式兼容。官方下载地址：',
             attr: { style: 'margin-top: 10px; color: var(--text-muted);' }
         }).createEl('a', {
             text: 'github.com/skywind3000/ECDICT',
@@ -713,7 +713,7 @@ export class EnglishAssistantSettingTab extends PluginSettingTab {
 
         new Setting(containerEl)
             .setName('Enable Local Dictionary')
-            .setDesc('Use built-in ECDICT dictionary for instant word lookups (reduces API costs)')
+            .setDesc('Use an optional ECDICT-compatible local dictionary for instant word lookups')
             .addToggle(toggle => toggle
                 .setValue(this.plugin.settings.enableLocalDictionary)
                 .onChange(async (value) => {
@@ -722,7 +722,7 @@ export class EnglishAssistantSettingTab extends PluginSettingTab {
                     if (value) {
                         // @ts-ignore
                         await this.plugin.dictService.loadBuiltInDictionary();
-                        new Notice('正在加载内置词典...');
+                        new Notice('正在加载本地词典...');
                     } else {
                         // @ts-ignore
                         this.plugin.dictService.clear();

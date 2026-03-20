@@ -1,5 +1,6 @@
 node_modules/
 data.json
+resources/ecdict.csv
 .DS_Store
 npm-debug.log*
 *.log

@@ -241,8 +241,7 @@ export class DictionaryService {
     }
 
     /**
-     * Load built-in ECDICT from plugin resources
-     * This provides a complete 770K+ word dictionary out of the box
+     * Load local ECDICT-compatible CSV from plugin resources
      */
     async loadBuiltInDictionary(): Promise<void> {
         // Prevent multiple simultaneous loads
@@ -300,7 +299,7 @@ export class DictionaryService {
                 return;
             }
             
-            console.log(`📖 Loading built-in ECDICT from: ${usedPath}`);
+            console.log(`📖 Loading local ECDICT dictionary from: ${usedPath}`);
             
             const startTime = performance.now();
             const lines = content.split('\n');
@@ -348,10 +347,10 @@ export class DictionaryService {
 
             this.isLoaded = true;
             const loadTime = ((performance.now() - startTime) / 1000).toFixed(2);
-            console.log(`✅ Built-in ECDICT loaded: ${loadedCount.toLocaleString()} words in ${loadTime}s`);
+            console.log(`✅ Local ECDICT dictionary loaded: ${loadedCount.toLocaleString()} words in ${loadTime}s`);
             new Notice(`Dictionary ready: ${loadedCount.toLocaleString()} words (${loadTime}s)`);
         } catch (error) {
-            console.error('⚠️ Failed to load built-in dictionary:', error);
+            console.error('⚠️ Failed to load local dictionary:', error);
             console.log('💡 Tip: You can replace resources/ecdict.csv with your own dictionary');
             this.loadingPromise = null;
             throw error;
