@@ -554,6 +554,7 @@ MIT License - 详见 [LICENSE](./LICENSE) 文件
 
 - **Issues**: [GitHub Issues](https://github.com/liuba1223/obsidian-english-assistant/issues)
 - **Repository**: [liuba1223/obsidian-english-assistant](https://github.com/liuba1223/obsidian-english-assistant)
+- **Email**: liuba0315@gmail.com
 
 ---
 
