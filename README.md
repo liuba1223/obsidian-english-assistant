@@ -8,6 +8,25 @@
 
 ---
 
+## 🌍 Feature Overview / 功能介绍
+
+English Assistant is an Obsidian plugin for English learning and writing support. It combines AI-powered grammar correction, offline dictionary lookup, shadowing practice, syntax visualization, and learning-note automation into one workflow.
+
+English Assistant 是一款面向 Obsidian 的英语学习与写作辅助插件。它把 AI 语法纠错、离线查词、Shadowing 跟读练习、句法可视化和学习笔记自动化整合到同一个工作流里。
+
+| 中文 | English |
+|------|---------|
+| **智能语法检查**：检查语法、拼写和标点问题，并给出解释与改写建议。 | **Smart grammar correction**: Checks grammar, spelling, and punctuation, then provides explanations and rewrite suggestions. |
+| **离线优先查词**：内置 77 万词 ECDICT 词典，常见查词场景开箱即用。 | **Offline-first dictionary lookup**: Ships with the 770k-word ECDICT dictionary for instant lookup out of the box. |
+| **AI 深度辅助**：可接入 OpenAI、DeepSeek、Moonshot、Ollama 等兼容服务。 | **AI-powered assistance**: Works with OpenAI, DeepSeek, Moonshot, Ollama, and other compatible providers. |
+| **Shadowing 跟读练习**：支持实时打字匹配和语法成分高亮，适合输入式练习。 | **Shadowing practice mode**: Supports real-time typing alignment and grammar-aware highlighting for active practice. |
+| **可视化语法分析**：用 Mermaid 语法树展示句子结构，帮助理解复杂句。 | **Visual syntax analysis**: Uses Mermaid-based syntax trees to make sentence structure easier to understand. |
+| **学习资料沉淀**：可自动保存单词、语法笔记和错误记录，形成个人知识库。 | **Learning note automation**: Saves vocabulary, grammar notes, and mistake logs into your personal knowledge base. |
+| **学习进度追踪**：统计写作量、错误类型和练习数据，帮助持续复盘。 | **Progress tracking**: Tracks writing volume, mistake categories, and practice activity for long-term review. |
+| **原生融入 Obsidian**：围绕笔记工作流设计，不需要切换到外部学习应用。 | **Built for Obsidian**: Designed around your note-taking workflow so you can learn without leaving your vault. |
+
+---
+
 ## ✨ 核心特性
 
 - **🧠 智能语法检查** - AI驱动的语法、拼写、标点检查
