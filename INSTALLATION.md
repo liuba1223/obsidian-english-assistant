@@ -11,7 +11,7 @@
 
 ```bash
 cd /path/to/your-vault/.obsidian/plugins
-git clone https://github.com/axtonliu/obsidian-english-assistant.git obsidian-english-assistant
+git clone https://github.com/liuba1223/obsidian-english-assistant.git obsidian-english-assistant
 ```
 
 ## Build From Source

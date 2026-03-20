@@ -64,7 +64,7 @@
 
 ```bash
 cd 你的笔记库/.obsidian/plugins
-git clone https://github.com/axtonliu/obsidian-english-assistant.git obsidian-english-assistant
+git clone https://github.com/liuba1223/obsidian-english-assistant.git obsidian-english-assistant
 ```
 
 ### 插件结构
@@ -511,8 +511,8 @@ MIT License - 详见 [LICENSE](./LICENSE) 文件
 
 ## 📞 联系方式
 
-- **Issues**: [GitHub Issues](https://github.com/axtonliu/obsidian-english-assistant/issues)
-- **Repository**: [axtonliu/obsidian-english-assistant](https://github.com/axtonliu/obsidian-english-assistant)
+- **Issues**: [GitHub Issues](https://github.com/liuba1223/obsidian-english-assistant/issues)
+- **Repository**: [liuba1223/obsidian-english-assistant](https://github.com/liuba1223/obsidian-english-assistant)
 
 ---
 
@@ -522,6 +522,6 @@ MIT License - 详见 [LICENSE](./LICENSE) 文件
 
 Made with ❤️ for Obsidian Community
 
-[⭐ Star on GitHub](https://github.com/axtonliu/obsidian-english-assistant) | [📖 Full Documentation](./DOCUMENTATION_INDEX.md) | [🚀 Get Started](./INSTALLATION.md)
+[⭐ Star on GitHub](https://github.com/liuba1223/obsidian-english-assistant) | [📖 Full Documentation](./DOCUMENTATION_INDEX.md) | [🚀 Get Started](./INSTALLATION.md)
 
 </div>

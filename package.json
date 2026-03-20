@@ -13,11 +13,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/axtonliu/obsidian-english-assistant.git"
+    "url": "git+https://github.com/liuba1223/obsidian-english-assistant.git"
   },
-  "homepage": "https://github.com/axtonliu/obsidian-english-assistant#readme",
+  "homepage": "https://github.com/liuba1223/obsidian-english-assistant#readme",
   "bugs": {
-    "url": "https://github.com/axtonliu/obsidian-english-assistant/issues"
+    "url": "https://github.com/liuba1223/obsidian-english-assistant/issues"
   },
   "devDependencies": {
     "@types/node": "^16.11.6",
