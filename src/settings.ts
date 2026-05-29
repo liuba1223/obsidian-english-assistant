@@ -50,7 +50,7 @@ export class EnglishAssistantSettingTab extends PluginSettingTab {
 		const {containerEl} = this;
 		containerEl.empty();
 
-		containerEl.createEl('h2', {text: '🎓 English Assistant Settings'});
+		containerEl.createEl('h2', {text: '🎓 English Learning Assistant Settings'});
 		
 		// Welcome message
 		containerEl.createEl('p', {

@@ -1419,6 +1419,7 @@ module.exports = __toCommonJS(main_exports);
 var import_obsidian16 = require("obsidian");
 
 // src/constants.ts
+var PLUGIN_ID = "english-learning-assistant";
 var PROVIDER_TEMPLATES = {
   "openai": {
     name: "OpenAI",
@@ -2412,11 +2413,11 @@ var DictionaryService = class {
   async _loadBuiltInDictionary() {
     try {
       const adapter = this.app.vault.adapter;
-      const pluginDir = this.app.vault.configDir ? `${this.app.vault.configDir}/plugins/obsidian-english-assistant` : ".obsidian/plugins/obsidian-english-assistant";
+      const pluginDir = this.app.vault.configDir ? `${this.app.vault.configDir}/plugins/${PLUGIN_ID}` : `.obsidian/plugins/${PLUGIN_ID}`;
       const builtInPath = `${pluginDir}/resources/ecdict.csv`;
       const possiblePaths = [
         builtInPath,
-        ".obsidian/plugins/obsidian-english-assistant/resources/ecdict.csv",
+        `.obsidian/plugins/${PLUGIN_ID}/resources/ecdict.csv`,
         "resources/ecdict.csv"
         // Fallback for development
       ];
@@ -2671,7 +2672,7 @@ var EnglishAssistantSettingTab = class extends import_obsidian6.PluginSettingTab
     var _a, _b;
     const { containerEl } = this;
     containerEl.empty();
-    containerEl.createEl("h2", { text: "\u{1F393} English Assistant Settings" });
+    containerEl.createEl("h2", { text: "\u{1F393} English Learning Assistant Settings" });
     containerEl.createEl("p", {
       text: "\u914D\u7F6E\u4F60\u7684\u82F1\u8BED\u5B66\u4E60\u52A9\u624B\uFF0C\u5F00\u542F\u9AD8\u6548\u5B66\u4E60\u4E4B\u65C5\u3002",
       cls: "setting-item-description",
@@ -4946,7 +4947,7 @@ var WelcomeModal = class extends import_obsidian14.Modal {
     const header = contentEl.createDiv({ cls: "welcome-header" });
     header.style.cssText = "text-align: center; padding: 30px 20px; background: var(--background-secondary); border-radius: 10px; margin-bottom: 30px;";
     header.innerHTML = `
-            <h1 style="font-size: 2em; margin-bottom: 10px;">\u{1F393} \u6B22\u8FCE\u4F7F\u7528 English Assistant!</h1>
+            <h1 style="font-size: 2em; margin-bottom: 10px;">\u{1F393} \u6B22\u8FCE\u4F7F\u7528 English Learning Assistant!</h1>
             <p style="color: var(--text-muted); font-size: 1.1em;">\u5F00\u542F\u4F60\u7684\u82F1\u8BED\u5B66\u4E60\u4E4B\u65C5</p>
         `;
     const featuresBox = contentEl.createDiv();
@@ -4980,7 +4981,7 @@ var WelcomeModal = class extends import_obsidian14.Modal {
                 <li><strong>\u5F00\u59CB\u4F7F\u7528\uFF1A</strong>
                     <ul>
                         <li>\u9009\u4E2D\u6587\u5B57 \u2192 \u53F3\u952E \u2192 \u8FD0\u884C\u547D\u4EE4 "Analyze Selection"</li>
-                        <li>Cmd/Ctrl + P \u2192 \u641C\u7D22 "English Assistant"</li>
+                        <li>Cmd/Ctrl + P \u2192 \u641C\u7D22 "English Learning Assistant"</li>
                     </ul>
                 </li>
             </ol>
@@ -5001,7 +5002,7 @@ var WelcomeModal = class extends import_obsidian14.Modal {
     new import_obsidian14.ButtonComponent(buttonRow).setButtonText("\u{1F4DD} \u524D\u5F80\u8BBE\u7F6E").setCta().onClick(() => {
       this.close();
       this.app.setting.open();
-      this.app.setting.openTabById("obsidian-english-assistant");
+      this.app.setting.openTabById(PLUGIN_ID);
     });
     new import_obsidian14.ButtonComponent(buttonRow).setButtonText("\u2705 \u5F00\u59CB\u4F7F\u7528").onClick(() => {
       this.close();
@@ -5182,7 +5183,7 @@ var EnglishAssistantPlugin = class extends import_obsidian16.Plugin {
     this.statusBarItemEl.addEventListener("click", () => {
       this.triggerReportCheck(true);
     });
-    this.addRibbonIcon("languages", "English Assistant", (evt) => {
+    this.addRibbonIcon("languages", "English Learning Assistant", (evt) => {
       const view = this.app.workspace.getActiveViewOfType(import_obsidian16.MarkdownView);
       if (view && view.editor) {
         this.triggerAnalysis(view.editor);

@@ -11,7 +11,7 @@ To enable offline dictionary lookup:
 3. Place it in this folder:
 
 ```text
-.obsidian/plugins/obsidian-english-assistant/resources/ecdict.csv
+.obsidian/plugins/english-learning-assistant/resources/ecdict.csv
 ```
 
 The plugin also supports other ECDICT-compatible CSV dictionaries.

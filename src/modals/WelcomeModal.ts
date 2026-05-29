@@ -1,4 +1,5 @@
 import { App, Modal, ButtonComponent } from 'obsidian';
+import { PLUGIN_ID } from '../constants';
 import { IEnglishAssistantPlugin } from '../types';
 
 export class WelcomeModal extends Modal {
@@ -19,7 +20,7 @@ export class WelcomeModal extends Modal {
         const header = contentEl.createDiv({ cls: 'welcome-header' });
         header.style.cssText = 'text-align: center; padding: 30px 20px; background: var(--background-secondary); border-radius: 10px; margin-bottom: 30px;';
         header.innerHTML = `
-            <h1 style="font-size: 2em; margin-bottom: 10px;">🎓 欢迎使用 English Assistant!</h1>
+            <h1 style="font-size: 2em; margin-bottom: 10px;">🎓 欢迎使用 English Learning Assistant!</h1>
             <p style="color: var(--text-muted); font-size: 1.1em;">开启你的英语学习之旅</p>
         `;
 
@@ -59,7 +60,7 @@ export class WelcomeModal extends Modal {
                 <li><strong>开始使用：</strong>
                     <ul>
                         <li>选中文字 → 右键 → 运行命令 "Analyze Selection"</li>
-                        <li>Cmd/Ctrl + P → 搜索 "English Assistant"</li>
+                        <li>Cmd/Ctrl + P → 搜索 "English Learning Assistant"</li>
                     </ul>
                 </li>
             </ol>
@@ -90,7 +91,7 @@ export class WelcomeModal extends Modal {
                 // @ts-ignore
                 this.app.setting.open();
                 // @ts-ignore
-                this.app.setting.openTabById('obsidian-english-assistant');
+                this.app.setting.openTabById(PLUGIN_ID);
             });
 
         new ButtonComponent(buttonRow)

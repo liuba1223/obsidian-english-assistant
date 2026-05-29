@@ -1,9 +1,9 @@
 {
-  "id": "obsidian-english-assistant",
-  "name": "English Assistant",
-  "version": "2.2.0",
+  "id": "english-learning-assistant",
+  "name": "English Learning Assistant",
+  "version": "2.2.1",
   "minAppVersion": "0.15.0",
-  "description": "Analyzes English grammar and provides suggestions.",
+  "description": "An English learning plugin for grammar feedback, reading practice, vocabulary lookup, syntax analysis, and progress tracking.",
   "author": "LQ",
   "authorUrl": "https://github.com/liuba1223/obsidian-english-assistant",
   "isDesktopOnly": false

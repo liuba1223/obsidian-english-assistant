@@ -1,7 +1,7 @@
 {
-  "name": "obsidian-english-assistant",
-  "version": "2.2.0",
-  "description": "An Obsidian plugin to analyze English grammar and suggest improvements.",
+  "name": "english-learning-assistant",
+  "version": "2.2.1",
+  "description": "An Obsidian plugin for English learning with grammar feedback, reading practice, vocabulary lookup, syntax analysis, and progress tracking.",
   "main": "main.js",
   "scripts": {
     "dev": "node esbuild.config.mjs",

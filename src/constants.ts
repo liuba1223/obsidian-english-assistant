@@ -1,5 +1,7 @@
 import { EnglishAssistantSettings } from './types';
 
+export const PLUGIN_ID = 'english-learning-assistant';
+
 export const PROVIDER_TEMPLATES: Record<string, { name: string; baseURL: string; model: string }> = {
     'openai': {
         name: 'OpenAI',

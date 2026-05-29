@@ -1,4 +1,5 @@
 import { App, Notice } from 'obsidian';
+import { PLUGIN_ID } from './constants';
 import { LocalDictEntry } from './types';
 
 export class DictionaryService {
@@ -264,15 +265,15 @@ export class DictionaryService {
             
             // Get plugin directory dynamically
             const pluginDir = (this.app.vault as any).configDir 
-                ? `${(this.app.vault as any).configDir}/plugins/obsidian-english-assistant`
-                : '.obsidian/plugins/obsidian-english-assistant';
+                ? `${(this.app.vault as any).configDir}/plugins/${PLUGIN_ID}`
+                : `.obsidian/plugins/${PLUGIN_ID}`;
             
             const builtInPath = `${pluginDir}/resources/ecdict.csv`;
             
             // Try multiple paths for better compatibility
             const possiblePaths = [
                 builtInPath,
-                '.obsidian/plugins/obsidian-english-assistant/resources/ecdict.csv',
+                `.obsidian/plugins/${PLUGIN_ID}/resources/ecdict.csv`,
                 'resources/ecdict.csv' // Fallback for development
             ];
             

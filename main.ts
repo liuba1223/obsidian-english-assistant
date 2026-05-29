@@ -79,7 +79,7 @@ export default class EnglishAssistantPlugin extends Plugin implements IEnglishAs
         });
 
 		// Add Ribbon Icon
-		this.addRibbonIcon('languages', 'English Assistant', (evt: MouseEvent) => {
+		this.addRibbonIcon('languages', 'English Learning Assistant', (evt: MouseEvent) => {
 			const view = this.app.workspace.getActiveViewOfType(MarkdownView);
             if (view && view.editor) {
                 this.triggerAnalysis(view.editor);

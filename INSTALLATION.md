@@ -3,9 +3,9 @@
 ## Quick Install
 
 1. Download or clone this repository.
-2. Copy the `obsidian-english-assistant` folder into your vault's `.obsidian/plugins/` directory.
+2. Copy or clone this repository as `english-learning-assistant` in your vault's `.obsidian/plugins/` directory.
 3. Restart Obsidian.
-4. Enable `English Assistant` in `Settings -> Community plugins`.
+4. Enable `English Learning Assistant` in `Settings -> Community plugins`.
 
 ## Optional Local Dictionary
 
@@ -22,14 +22,14 @@ Install it like this:
 
 1. Download `ecdict.csv`, `ecdict.mini.csv`, or another ECDICT-compatible CSV dictionary.
 2. Rename the file to `ecdict.csv`.
-3. Place it at `.obsidian/plugins/obsidian-english-assistant/resources/ecdict.csv`.
+3. Place it at `.obsidian/plugins/english-learning-assistant/resources/ecdict.csv`.
 4. Open plugin settings and click `Reload Dictionary`.
 
 ## Clone From GitHub
 
 ```bash
 cd /path/to/your-vault/.obsidian/plugins
-git clone https://github.com/liuba1223/obsidian-english-assistant.git obsidian-english-assistant
+git clone https://github.com/liuba1223/obsidian-english-assistant.git english-learning-assistant
 ```
 
 ## Build From Source
@@ -49,7 +49,7 @@ The compiled plugin files are:
 
 ## First-Time Setup
 
-1. Open `Settings -> English Assistant`.
+1. Open `Settings -> English Learning Assistant`.
 2. Choose an AI provider.
 3. Fill in your API key if you want AI-powered features.
 4. Test the connection.

@@ -6,13 +6,13 @@
 ```bash
 # 1. 下载插件压缩包（包含所有必要文件）
 # 2. 解压到 Obsidian 库的插件目录：
-你的笔记库/.obsidian/plugins/obsidian-english-assistant/
+你的笔记库/.obsidian/plugins/english-learning-assistant/
 ```
 
 ### 2. 文件结构验证
 确保以下文件结构完整：
 ```
-obsidian-english-assistant/
+english-learning-assistant/
 ├── main.js                 # 主程序文件（必需）
 ├── manifest.json          # 插件信息文件（必需）
 ├── styles.css            # 样式文件（必需）
@@ -26,7 +26,7 @@ obsidian-english-assistant/
 1. 打开 Obsidian
 2. 进入 **设置 → 第三方插件**
 3. 关闭 **安全模式**
-4. 找到 **English Assistant** 并启用
+4. 找到 **English Learning Assistant** 并启用
 5. 插件会自动初始化所有必要设置
 
 ## ✅ 开箱即用功能
@@ -40,7 +40,7 @@ obsidian-english-assistant/
 
 ### 需要简单配置的功能：
 - **🤖 AI 功能**：需要设置 API Key
-  - 进入设置 → English Assistant → AI 配置
+  - 进入设置 → English Learning Assistant → AI 配置
   - 选择提供商（OpenAI/DeepSeek/Moonshot等）
   - 输入 API Key
 

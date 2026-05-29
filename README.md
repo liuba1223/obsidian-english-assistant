@@ -1,8 +1,8 @@
-# 🎓 English Assistant for Obsidian
+# 🎓 English Learning Assistant for Obsidian
 
 > 支持按需安装本地词典的 Obsidian 英语学习助手
 
-[![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)](./manifest.json)
+[![Version](https://img.shields.io/badge/version-2.2.1-blue.svg)](./manifest.json)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 [![Obsidian](https://img.shields.io/badge/Obsidian-v1.0.0+-purple.svg)](https://obsidian.md)
 
@@ -10,9 +10,9 @@
 
 ## 🌍 Feature Overview / 功能介绍
 
-English Assistant is an Obsidian plugin for English learning and writing support. It combines AI-powered grammar correction, optional local dictionary lookup, shadowing practice, syntax visualization, and learning-note automation into one workflow.
+English Learning Assistant is an Obsidian plugin for English learning and writing support. It combines AI-powered grammar feedback, optional local dictionary lookup, shadowing practice, syntax visualization, progress tracking, and learning-note automation into one workflow.
 
-English Assistant 是一款面向 Obsidian 的英语学习与写作辅助插件。它把 AI 语法纠错、可选本地词典查词、Shadowing 跟读练习、句法可视化和学习笔记自动化整合到同一个工作流里。
+English Learning Assistant 是一款面向 Obsidian 的英语学习与写作辅助插件。它把 AI 语法反馈、可选本地词典查词、Shadowing 跟读练习、句法可视化、学习进度追踪和学习笔记自动化整合到同一个工作流里。
 
 | 中文 | English |
 |------|---------|
@@ -52,7 +52,7 @@ English Assistant 是一款面向 Obsidian 的英语学习与写作辅助插件�
 
 ### 🎯 专为英语学习设计
 
-不同于 Grammarly 等通用工具，English Assistant 深度整合知识管理：
+不同于 Grammarly 等通用工具，English Learning Assistant 深度整合知识管理：
 
 ```
 写作 → 检查 → 查词 → 分析 → 练习 → 保存 → 复习
@@ -70,7 +70,7 @@ English Assistant 是一款面向 Obsidian 的英语学习与写作辅助插件�
 ### 方式 1：手动安装（推荐）
 
 1. 下载插件文件（轻量包，不包含大型词典）
-2. 解压到 `.obsidian/plugins/obsidian-english-assistant/`
+2. 解压到 `.obsidian/plugins/english-learning-assistant/`
 3. 如需离线查词，再单独下载 `ecdict.csv` 或兼容 CSV 词典
 4. 将词典文件放到 `resources/ecdict.csv`
 5. 重启 Obsidian 并启用插件
@@ -94,20 +94,20 @@ English Assistant 是一款面向 Obsidian 的英语学习与写作辅助插件�
 
 1. 下载 `ecdict.csv`、`ecdict.mini.csv` 或兼容 ECDICT 格式的 CSV 文件
 2. 将文件重命名为 `ecdict.csv`
-3. 放到 `.obsidian/plugins/obsidian-english-assistant/resources/`
+3. 放到 `.obsidian/plugins/english-learning-assistant/resources/`
 4. 在插件设置中点击 `Reload Dictionary`
 
 ### 方式 2：Git Clone
 
 ```bash
 cd 你的笔记库/.obsidian/plugins
-git clone https://github.com/liuba1223/obsidian-english-assistant.git obsidian-english-assistant
+git clone https://github.com/liuba1223/obsidian-english-assistant.git english-learning-assistant
 ```
 
 ### 插件结构
 
 ```
-obsidian-english-assistant/
+english-learning-assistant/
 ├── main.js           (120 KB) - 主程序
 ├── manifest.json     (315 B)  - 插件信息
 ├── styles.css        (18 KB)  - 样式
@@ -129,7 +129,7 @@ obsidian-english-assistant/
 
 **必需配置：**
 ```
-设置 → English Assistant → 🤖 AI 配置
+设置 → English Learning Assistant → 🤖 AI 配置
 ├── Provider: 选择 OpenAI/DeepSeek/Moonshot 等
 ├── API Key: 粘贴你的密钥
 └── 点击 "Test Connection" 确认
@@ -312,7 +312,7 @@ Saved on: 2025-11-27
 
 ## 📊 对比其他工具
 
-| 功能 | English Assistant | Grammarly | Quillbot | 词典App |
+| 功能 | English Learning Assistant | Grammarly | Quillbot | 词典App |
 |------|-------------------|-----------|----------|---------|
 | 语法检查 | ✅ AI驱动 | ✅ 更强大 | ✅ 基础 | ❌ |
 | 查词功能 | ✅ 本地词典 + AI | ❌ | ❌ | ✅ 需切换 |
@@ -385,7 +385,7 @@ Saved on: 2025-11-27
 ### 设置界面（6大板块）
 
 ```
-⚙️ English Assistant Settings
+⚙️ English Learning Assistant Settings
 
 🤖 AI Configuration
   ├─ Provider: [OpenAI ▼]
